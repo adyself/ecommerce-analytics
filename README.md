@@ -10,27 +10,6 @@ E-Commerce Analytics (ETL + Dashboard)
 - Streamlit-дашборд: KPI Overview, воронка, когортный анализ, сегментация, заказы
 - Контейнеризация через Docker
 
-Структура проекта
-ecommerce-analytics/
-├── src/
-│   ├── etl/
-│   │   ├── extract.py
-│   │   ├── transform.py
-│   │   ├── load.py
-│   │   └── run.py
-│   ├── dashboard/
-│   │   └── app.py
-│   └── utils/
-│       └── db.py
-├── data/
-│   ├── raw/
-│   └── synthetic/
-├── notebooks/
-│   └── eda.ipynb
-├── docker-compose.yml
-├── Dockerfile
-├── requirements.txt
-└── README.md
 
 Запуск
 1. Создать файл .env:
