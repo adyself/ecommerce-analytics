@@ -14,8 +14,11 @@ E-Commerce Analytics (ETL + Dashboard)
 Запуск
 1. Создать файл .env:
    POSTGRES_USER=postgres
+
    POSTGRES_PASSWORD=postgres
+   
    POSTGRES_DB=ecomm
+   
    POSTGRES_PORT=5432
 
 2. Запуск контейнеров:
