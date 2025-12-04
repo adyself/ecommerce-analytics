@@ -41,14 +41,33 @@ docker compose run --rm etl
 http://localhost:8501
 
 Структура
-src/
-  etl/
-  dashboard/
-  utils/
-data/
-docker-compose.yml
-Dockerfile
-README.md
+ecommerce-analytics/
+│
+├── src/
+│   ├── etl/
+│   │   ├── extract.py
+│   │   ├── transform.py
+│   │   ├── load.py
+│   │   └── run.py
+│   │
+│   ├── dashboard/
+│   │   └── app.py
+│   │
+│   └── utils/
+│       └── db.py
+│
+├── data/
+│   ├── raw/               # CSV-файлы (если нужны)
+│   └── synthetic/         # Автогенерируемые данные
+│
+├── notebooks/
+│   └── eda.ipynb
+│
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+└── README.md
+
 
 Описание
 
