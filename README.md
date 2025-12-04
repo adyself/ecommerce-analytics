@@ -1,15 +1,129 @@
-# E-Commerce Analytics (ETL + Dashboard)
+E-commerce Analytics Pipeline (ETL + Dashboard)
 
-Проект включает:
-- PostgreSQL (Docker)
-- ETL-пайплайн на Python (extract → transform → load)
-- Streamlit дашборд для анализа продаж, когорт, LTV, воронки
+Проект представляет собой полноценный аналитический контур для e-commerce, включающий:
 
-##  Запуск проекта
+генерацию синтетических данных;
 
-### 1. Клонировать репозиторий
+ETL-конвейер (extract, transform, load);
 
-```bash
-git clone https://github.com/<adyself>/ecommerce-analytics.git
-cd ecommerce-analytics
+инфраструктуру на PostgreSQL и Docker;
 
+аналитические SQL-представления;
+
+дашборд на Streamlit.
+
+Работа демонстрирует навыки data engineering, analytics engineering и аналитики.
+
+Структура проекта
+ecommerce-analytics/
+│
+├── src/
+│   ├── etl/
+│   │   ├── extract.py
+│   │   ├── transform.py
+│   │   ├── load.py
+│   │   └── run.py          # Главная точка запуска ETL
+│   └── utils/
+│       └── db.py           # Конфигурация подключения к БД
+│
+├── data/
+│   ├── raw/                # Исходные CSV-файлы (создаются автоматически)
+│   ├── synthetic/          # Генератор синтетических данных
+│   └── ...                 # Том PostgreSQL (игнорируется Git)
+│
+├── dashboard/
+│   └── app.py              # Дашборд Streamlit
+│
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+├── .env.example
+└── README.md
+
+Функциональность
+1. Генерация данных
+
+При отсутствии входных данных автоматически создаётся синтетический набор:
+
+пользователи,
+
+продукты,
+
+заказы,
+
+позиции заказов,
+
+пользовательские события.
+
+2. ETL-конвейер
+
+Включает следующие этапы:
+
+Extract — загрузка CSV в pandas;
+
+Transform — преобразование, нормализация и расчёт полей;
+
+Load — запись в PostgreSQL через SQLAlchemy.
+
+3. База данных и аналитические представления
+
+Создаются и обновляются представления:
+
+daily_metrics — ежедневные метрики (выручка, AOV, заказы);
+
+weekly_cohort — когорты по неделям;
+
+funnel_by_session — воронка по сессиям;
+
+user_ltv_30 — LTV за 30 дней.
+
+4. Streamlit Dashboard
+
+Интерактивный интерфейс с разделами:
+
+Общий обзор (KPI);
+
+Воронка;
+
+Когорты;
+
+Сегментация пользователей (RFM);
+
+История заказов.
+
+Запуск проекта
+1. Настройка переменных окружения
+
+Создайте файл .env:
+
+cp .env.example .env
+
+2. Запуск сервисов
+docker compose up -d
+
+
+Запустятся:
+
+PostgreSQL,
+
+контейнер ETL (при вызове),
+
+дашборд Streamlit.
+
+3. Выполнение ETL
+docker compose run --rm etl
+
+
+Команда:
+
+генерирует данные,
+
+заполняет таблицы,
+
+обновляет аналитические представления.
+
+4. Дашборд
+
+Открыть в браузере:
+
+http://localhost:8501
