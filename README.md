@@ -1,74 +1,49 @@
-E-commerce Analytics (ETL + Dashboard)
+E-Commerce Analytics (ETL + Dashboard)
 
-Проект для демонстрации аналитического пайплайна: генерация данных → ETL → PostgreSQL → Streamlit-дашборд.
-
-Стек
-
--Python
--PostgreSQL (Docker)
--SQLAlchemy + Pandas
--Streamlit
--Docker Compose
+Учебный проект по построению аналитической системы для интернет-магазина.
+Включает полный ETL-конвейер, генерацию данных, витрины и Streamlit-дашборд.
 
 Возможности
+- Генерация синтетических данных (заказы, клиенты, товары)
+- Полный ETL-процесс: Extract → Transform → Load
+- Создание витрин (daily_metrics, funnel, cohorts и др.)
+- Streamlit-дашборд: KPI Overview, воронка, когортный анализ, сегментация, заказы
+- Контейнеризация через Docker
 
-Генерация синтетических данных (customers, products, orders, events).
-
-ETL: extract → transform → load в PostgreSQL.
-
-Дашборд с аналитикой:
-
--KPI (revenue, AOV, orders)
--Воронка (session funnel)
--Когорты
--RFM-сегментация
--Последние заказы
-
-Запуск проекта
-1. Запуск БД + дашборда
-docker compose up -d
-
-2. Запуск ETL
-docker compose run --rm etl
-
-
-Данные загрузятся в PostgreSQL автоматически.
-
-3. Дашборд
-
-Открой в браузере:
-
-http://localhost:8501
-
-Структура
+Структура проекта
 ecommerce-analytics/
-│
 ├── src/
 │   ├── etl/
 │   │   ├── extract.py
 │   │   ├── transform.py
 │   │   ├── load.py
 │   │   └── run.py
-│   │
 │   ├── dashboard/
 │   │   └── app.py
-│   │
 │   └── utils/
 │       └── db.py
-│
 ├── data/
-│   ├── raw/               # CSV-файлы (если нужны)
-│   └── synthetic/         # Автогенерируемые данные
-│
+│   ├── raw/
+│   └── synthetic/
 ├── notebooks/
 │   └── eda.ipynb
-│
 ├── docker-compose.yml
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
 
+Запуск
+1. Создать файл .env:
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=postgres
+   POSTGRES_DB=ecomm
+   POSTGRES_PORT=5432
 
-Описание
+2. Запуск контейнеров:
+   docker compose up -d
 
-Проект создан как демонстрация навыков Data Engineering + Analytics: построение витрин, метрик и визуализации данных.
+3. Запуск ETL:
+   docker compose run --rm etl
+
+4. Dashboard:
+   http://localhost:8501
