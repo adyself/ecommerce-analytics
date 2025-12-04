@@ -13,6 +13,7 @@ E-Commerce Analytics (ETL + Dashboard)
 
 Запуск
 1. Создать файл .env:
+   
    POSTGRES_USER=postgres
 
    POSTGRES_PASSWORD=postgres
