@@ -1,0 +1,88 @@
+# ============================================================
+#  PYTHON / PROJECT
+# ============================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# Local environment variables
+.env
+*.env
+
+# ============================================================
+#  DATA (PostgreSQL storage + generated files)
+# ============================================================
+
+# Ignore all data by default
+data/*
+
+# Allow raw CSV files if needed
+!data/raw/
+!data/raw/**
+
+# Allow synthetic generator folder (but not Postgres files)
+!data/synthetic/
+!data/synthetic/**
+# Ignore synthetic data outputs except .py
+data/synthetic/*.csv
+data/synthetic/*.parquet
+
+# Explicitly ignore PostgreSQL internal dirs (if accidentally created)
+data/base/
+data/global/
+data/pg_*/
+data/pg_wal/
+data/log/
+data/postgresql.conf
+data/postmaster.pid
+data/postmaster.opts
+
+# ============================================================
+#  DOCKER
+# ============================================================
+
+# Docker build artifacts
+*.tar
+*.log
+
+# Compose override files
+docker-compose.override.yml
+
+# ============================================================
+#  STREAMLIT / DASHBOARD
+# ============================================================
+
+# Streamlit cache
+.streamlit/
+**/.streamlit/
+
+# Streamlit logs
+logs/
+*.log
+
+# ============================================================
+#  MISC
+# ============================================================
+
+.DS_Store
+Thumbs.db
+
+# Ignore backups
+*.bak
+*.tmp
+*.swp
+
